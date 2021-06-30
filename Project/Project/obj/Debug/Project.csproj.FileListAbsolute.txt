@@ -9,3 +9,14 @@ D:\git\Application-Programming\Project\Project\obj\Debug\Project.csproj.CoreComp
 D:\git\Application-Programming\Project\Project\obj\Debug\Project.exe
 D:\git\Application-Programming\Project\Project\obj\Debug\Project.pdb
 D:\git\Application-Programming\Project\Project\obj\Debug\Project.teacher.resources
+C:\Users\user\Desktop\winform\Project\Project\bin\Debug\Project.exe.config
+C:\Users\user\Desktop\winform\Project\Project\bin\Debug\Project.exe
+C:\Users\user\Desktop\winform\Project\Project\bin\Debug\Project.pdb
+C:\Users\user\Desktop\winform\Project\Project\obj\Debug\Project.csprojAssemblyReference.cache
+C:\Users\user\Desktop\winform\Project\Project\obj\Debug\Project.Properties.Resources.resources
+C:\Users\user\Desktop\winform\Project\Project\obj\Debug\Project.student.resources
+C:\Users\user\Desktop\winform\Project\Project\obj\Debug\Project.teacher.resources
+C:\Users\user\Desktop\winform\Project\Project\obj\Debug\Project.csproj.GenerateResource.cache
+C:\Users\user\Desktop\winform\Project\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\winform\Project\Project\obj\Debug\Project.exe
+C:\Users\user\Desktop\winform\Project\Project\obj\Debug\Project.pdb

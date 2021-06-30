@@ -32,6 +32,7 @@ namespace Project
             this.title = new System.Windows.Forms.Label();
             this.todaydate = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Attendance = new System.Windows.Forms.ListBox();
             this.myAttendance = new System.Windows.Forms.Label();
             this.listView = new System.Windows.Forms.Button();
@@ -43,32 +44,34 @@ namespace Project
             this.number = new System.Windows.Forms.TextBox();
             this.name = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // title
             // 
             this.title.AutoSize = true;
-            this.title.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Bold);
+            this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.title.ForeColor = System.Drawing.Color.Black;
             this.title.Location = new System.Drawing.Point(27, 51);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(154, 37);
+            this.title.Size = new System.Drawing.Size(149, 36);
             this.title.TabIndex = 0;
             this.title.Text = "오늘의 출석";
             // 
             // todaydate
             // 
             this.todaydate.AutoSize = true;
-            this.todaydate.Font = new System.Drawing.Font("Roboto", 11F);
+            this.todaydate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.todaydate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
             this.todaydate.Location = new System.Drawing.Point(30, 100);
             this.todaydate.Name = "todaydate";
-            this.todaydate.Size = new System.Drawing.Size(70, 23);
+            this.todaydate.Size = new System.Drawing.Size(70, 24);
             this.todaydate.TabIndex = 1;
             this.todaydate.Text = "날짜입력";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Controls.Add(this.Attendance);
             this.groupBox1.Controls.Add(this.myAttendance);
             this.groupBox1.Controls.Add(this.listView);
@@ -78,25 +81,37 @@ namespace Project
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridView1.Location = new System.Drawing.Point(20, 77);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 27;
+            this.dataGridView1.Size = new System.Drawing.Size(399, 525);
+            this.dataGridView1.TabIndex = 9;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
             // Attendance
             // 
             this.Attendance.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Attendance.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Attendance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Attendance.FormattingEnabled = true;
-            this.Attendance.ItemHeight = 24;
+            this.Attendance.ItemHeight = 25;
             this.Attendance.Location = new System.Drawing.Point(20, 77);
             this.Attendance.Name = "Attendance";
-            this.Attendance.Size = new System.Drawing.Size(400, 528);
+            this.Attendance.Size = new System.Drawing.Size(400, 525);
             this.Attendance.TabIndex = 8;
             // 
             // myAttendance
             // 
             this.myAttendance.AutoSize = true;
-            this.myAttendance.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Bold);
+            this.myAttendance.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.myAttendance.ForeColor = System.Drawing.Color.Black;
             this.myAttendance.Location = new System.Drawing.Point(185, 22);
             this.myAttendance.Name = "myAttendance";
-            this.myAttendance.Size = new System.Drawing.Size(95, 37);
+            this.myAttendance.Size = new System.Drawing.Size(90, 36);
             this.myAttendance.TabIndex = 8;
             this.myAttendance.Text = "내출석";
             // 
@@ -108,7 +123,7 @@ namespace Project
             this.listView.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(132)))), ((int)(((byte)(200)))));
             this.listView.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(150)))), ((int)(((byte)(225)))));
             this.listView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.listView.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.listView.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.listView.ForeColor = System.Drawing.Color.White;
             this.listView.Location = new System.Drawing.Point(349, 612);
             this.listView.Margin = new System.Windows.Forms.Padding(0);
@@ -127,7 +142,7 @@ namespace Project
             this.addButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(132)))), ((int)(((byte)(200)))));
             this.addButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(150)))), ((int)(((byte)(225)))));
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addButton.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.addButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.addButton.ForeColor = System.Drawing.Color.White;
             this.addButton.Location = new System.Drawing.Point(279, 173);
             this.addButton.Margin = new System.Windows.Forms.Padding(0);
@@ -142,35 +157,36 @@ namespace Project
             // 
             this.year.Location = new System.Drawing.Point(34, 130);
             this.year.Name = "year";
-            this.year.Size = new System.Drawing.Size(100, 26);
+            this.year.Size = new System.Drawing.Size(100, 24);
             this.year.TabIndex = 8;
             // 
             // month
             // 
             this.month.Location = new System.Drawing.Point(151, 130);
             this.month.Name = "month";
-            this.month.Size = new System.Drawing.Size(100, 26);
+            this.month.Size = new System.Drawing.Size(100, 24);
             this.month.TabIndex = 9;
             // 
             // day
             // 
             this.day.Location = new System.Drawing.Point(268, 130);
             this.day.Name = "day";
-            this.day.Size = new System.Drawing.Size(100, 26);
+            this.day.Size = new System.Drawing.Size(100, 24);
             this.day.TabIndex = 10;
             // 
             // nClass
             // 
             this.nClass.Location = new System.Drawing.Point(385, 130);
             this.nClass.Name = "nClass";
-            this.nClass.Size = new System.Drawing.Size(100, 26);
+            this.nClass.Size = new System.Drawing.Size(100, 24);
             this.nClass.TabIndex = 11;
+            this.nClass.TextChanged += new System.EventHandler(this.nClass_TextChanged);
             // 
             // number
             // 
             this.number.Location = new System.Drawing.Point(34, 172);
             this.number.Name = "number";
-            this.number.Size = new System.Drawing.Size(100, 26);
+            this.number.Size = new System.Drawing.Size(100, 24);
             this.number.TabIndex = 12;
             this.number.Tag = "";
             // 
@@ -178,12 +194,12 @@ namespace Project
             // 
             this.name.Location = new System.Drawing.Point(151, 172);
             this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(100, 26);
+            this.name.Size = new System.Drawing.Size(100, 24);
             this.name.TabIndex = 13;
             // 
             // student
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1062, 673);
@@ -197,12 +213,15 @@ namespace Project
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.todaydate);
             this.Controls.Add(this.title);
-            this.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ImeMode = System.Windows.Forms.ImeMode.KatakanaHalf;
             this.Name = "student";
             this.Text = "오늘의 수업";
+            this.Load += new System.EventHandler(this.student_Load_1);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,6 +242,7 @@ namespace Project
         private System.Windows.Forms.TextBox nClass;
         private System.Windows.Forms.TextBox number;
         private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
