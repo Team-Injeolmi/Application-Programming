@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -10,6 +11,12 @@ namespace Project
     public partial class student : Form
     {
         DataTable table = new DataTable();
+
+        [DllImport("gdi32.dll")]
+        private static extern IntPtr CreateRoundRectRgn(int x1, int y1, int x2, int y2, int cx, int cy);
+
+        [DllImport("user32.dll")]
+        private static extern int SetWindowRgn(IntPtr hWnd, IntPtr hRgn, bool bRedraw);
 
         public student()
         {
@@ -50,6 +57,20 @@ namespace Project
             name.Text = "이름";
             this.name.Leave += new System.EventHandler(this.name_Leave);
             this.name.Enter += new System.EventHandler(this.name_Enter);
+
+            button_Round();
+        }
+
+        private void button_Round()
+        {
+            IntPtr ipAdd = CreateRoundRectRgn(0, 0, addButton.Width, addButton.Height, 5, 5);
+            int add = SetWindowRgn(addButton.Handle, ipAdd, true);
+
+            IntPtr ipList = CreateRoundRectRgn(0, 0, listView.Width, listView.Height, 5, 5);
+            int list = SetWindowRgn(listView.Handle, ipList, true);
+
+            IntPtr ipButton = CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 5, 5);
+            int button = SetWindowRgn(button1.Handle, ipButton, true);
         }
 
         private void year_Leave(object sender, EventArgs e)
@@ -179,7 +200,6 @@ namespace Project
 
         private void addButton_Click(object sender, EventArgs e)
         {
-
             string myConnectionString = "server=localhost;database=winform;uid=root;pwd=1234;";
             MySqlConnection cnn = new MySqlConnection(myConnectionString);
             try

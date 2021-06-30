@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,13 @@ namespace Project
     public partial class teacher : Form
     {
         DataTable table = new DataTable();
+
+        [DllImport("gdi32.dll")]
+        private static extern IntPtr CreateRoundRectRgn(int x1, int y1, int x2, int y2, int cx, int cy);
+
+        [DllImport("user32.dll")]
+        private static extern int SetWindowRgn(IntPtr hWnd, IntPtr hRgn, bool bRedraw);
+
         public teacher()
         {
             InitializeComponent();
@@ -44,7 +52,18 @@ namespace Project
             this.nClass.Leave += new System.EventHandler(this.nClass_Leave);
             this.nClass.Enter += new System.EventHandler(this.nClass_Enter);
 
+            button_Round();
         }
+
+        private void button_Round()
+        {
+            IntPtr ipAdd = CreateRoundRectRgn(0, 0, addButton.Width, addButton.Height, 5, 5);
+            int add = SetWindowRgn(addButton.Handle, ipAdd, true);
+
+            IntPtr ipList = CreateRoundRectRgn(0, 0, listView.Width, listView.Height, 5, 5);
+            int list = SetWindowRgn(listView.Handle, ipList, true);
+        }
+
         private void year_Leave(object sender, EventArgs e)
         {
             if (year.Text.Length == 0)

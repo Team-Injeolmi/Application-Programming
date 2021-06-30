@@ -266,6 +266,8 @@ namespace Project
         private System.Windows.Forms.TextBox name;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
+
+        
     }
 }
 
