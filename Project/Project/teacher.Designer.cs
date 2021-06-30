@@ -34,11 +34,11 @@ namespace Project
             this.year = new System.Windows.Forms.TextBox();
             this.addButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.myAttendance = new System.Windows.Forms.Label();
             this.listView = new System.Windows.Forms.Button();
             this.todaydate = new System.Windows.Forms.Label();
             this.title = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.nClass = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -95,6 +95,19 @@ namespace Project
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.GridColor = System.Drawing.Color.White;
+            this.dataGridView1.Location = new System.Drawing.Point(18, 75);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 27;
+            this.dataGridView1.Size = new System.Drawing.Size(401, 534);
+            this.dataGridView1.TabIndex = 9;
+            // 
             // myAttendance
             // 
             this.myAttendance.AutoSize = true;
@@ -147,18 +160,6 @@ namespace Project
             this.title.TabIndex = 14;
             this.title.Text = "선생님, 안녕하세요!";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.GridColor = System.Drawing.Color.White;
-            this.dataGridView1.Location = new System.Drawing.Point(18, 75);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(401, 534);
-            this.dataGridView1.TabIndex = 9;
-            // 
             // nClass
             // 
             this.nClass.Location = new System.Drawing.Point(378, 130);
@@ -168,10 +169,9 @@ namespace Project
             // 
             // teacher
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1222, 753);
+            this.ClientSize = new System.Drawing.Size(1062, 673);
             this.Controls.Add(this.nClass);
             this.Controls.Add(this.day);
             this.Controls.Add(this.month);
