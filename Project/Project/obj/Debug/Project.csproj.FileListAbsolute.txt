@@ -1,0 +1,11 @@
+D:\git\Application-Programming\Project\Project\bin\Debug\Project.exe.config
+D:\git\Application-Programming\Project\Project\bin\Debug\Project.exe
+D:\git\Application-Programming\Project\Project\bin\Debug\Project.pdb
+D:\git\Application-Programming\Project\Project\obj\Debug\Project.csprojAssemblyReference.cache
+D:\git\Application-Programming\Project\Project\obj\Debug\Project.Properties.Resources.resources
+D:\git\Application-Programming\Project\Project\obj\Debug\Project.student.resources
+D:\git\Application-Programming\Project\Project\obj\Debug\Project.csproj.GenerateResource.cache
+D:\git\Application-Programming\Project\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
+D:\git\Application-Programming\Project\Project\obj\Debug\Project.exe
+D:\git\Application-Programming\Project\Project\obj\Debug\Project.pdb
+D:\git\Application-Programming\Project\Project\obj\Debug\Project.teacher.resources
