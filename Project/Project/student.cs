@@ -1,35 +1,102 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.OracleClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Project
 {
 
     public partial class student : Form
     {
-        static int errorBoxCount = 0;
+        DataTable table = new DataTable();
 
         public student()
         {
             InitializeComponent();
+            table.Columns.Add("name", typeof(string));
+            table.Columns.Add("class", typeof(string));
+            table.Columns.Add("date", typeof(string));
+            table.Columns.Add("id", typeof(string));
+
+            dataGridView1.DataSource = table;
+        }
+
+
+
+        private void student_Load_1(object sender, EventArgs e)
+        {
+            string myConnectionString = "server=localhost;database=winform;uid=root;pwd=1234;";
+            MySqlConnection cnn = new MySqlConnection(myConnectionString);
+            try
+            {
+                MySqlCommand cmd_db = new MySqlCommand("SELECT * FROM winformdata;", cnn);
+                MySqlDataAdapter sda = new MySqlDataAdapter();
+                sda.SelectCommand = cmd_db;
+                DataTable dbdataset = new DataTable();
+                sda.Fill(dbdataset);
+                BindingSource bSource = new BindingSource();
+
+                bSource.DataSource = dbdataset;
+                dataGridView1.DataSource = bSource;
+                sda.Update(dbdataset);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                cnn.Close();
+            }
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            Attendance.Items.Add(" - " + year.Text + "년 " + month.Text + "월 " + day.Text + "일 " + nClass.Text + " " + number.Text + " " + name.Text + " 출석");
-            year.Text = "";
-            month.Text = "";
-            day.Text = "";
-            nClass.Text = "";
-            number.Text = "";
-            name.Text = "";
+
+            string myConnectionString = "server=localhost;database=winform;uid=root;pwd=1234;";
+            MySqlConnection cnn = new MySqlConnection(myConnectionString);
+            try
+            {
+                cnn.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex), "Cannot open connection!");
+            }
+
+            if (year.Text == "" ||
+            month.Text == "" ||
+            day.Text == "" ||
+            nClass.Text == "" ||
+            number.Text == "" ||
+            name.Text == "")
+            {
+                MessageBox.Show("항목을 정확히 입력해주세요");
+            }
+            else
+            {
+                table.Rows.Add(name.Text, nClass.Text, year.Text+"년"+month.Text+"월"+day.Text+"일"
+                , number.Text);
+
+                string sql = string.Format("INSERT INTO winformdata VALUES  ( '{0}','{1}','{2}','{3}' )",
+                    name.Text, year.Text+"년"+month.Text+"월"+day.Text+"일", nClass.Text, number.Text);
+
+                name.Clear();
+                nClass.Clear();
+                year.Clear();
+                month.Clear();
+                day.Clear();
+                number.Clear();
+
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(sql, cnn);
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    cnn.Close();
+                }
+
+            }
         }
 
         private void listView_Click(object sender, EventArgs e)
@@ -49,135 +116,29 @@ namespace Project
 
         }
 
-        private void student_Load_1(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
 
+            string myConnectionString = "server=localhost;database=winform;uid=root;pwd=1234;";
+            MySqlConnection cnn = new MySqlConnection(myConnectionString);
             try
             {
-                lock (DBHelper.DBConn)
-                {
-                    if (!DBHelper.IsDBConnected)
-                    {
-                        MessageBox.Show("Database 연결을 확인하세요.");
-                        return;
-                    }
-                    else
-                    {
-                        string sql = "SELECT * FROM checkDate;";
-                        OracleDataAdapter adapter = new OracleDataAdapter(sql, DBHelper.DBConn);
-                        DataTable date_table = new DataTable();
-                        if (date_table == null)
-                        {
-                            dataGridView1.DataSource = "데이터없음";
-                            MessageBox.Show("성공");
-                        }
-                        else
-                        {
-                            try
-                            {
-                                adapter.Fill(date_table);
-                                //dataGridview 
-                                dataGridView1.DataSource = date_table;
-                                MessageBox.Show("성공");
-                            }
-                            catch (System.Exception ex)
-                            {
+                MySqlCommand cmd_db = new MySqlCommand("SELECT * FROM winformdata;", cnn);
+                MySqlDataAdapter sda = new MySqlDataAdapter();
+                sda.SelectCommand = cmd_db;
+                DataTable dbdataset = new DataTable();
+                sda.Fill(dbdataset);
+                BindingSource bSource = new BindingSource();
 
-                            }
-                        }
-                        DBHelper.Close();
-                    }
-                }
+                bSource.DataSource = dbdataset;
+                dataGridView1.DataSource = bSource;
+                sda.Update(dbdataset);
             }
-            catch (ArgumentException ane)
+            catch (Exception ex)
             {
-                errorBoxCount++;
-                if (errorBoxCount == 1)
-                {
-                    MessageBox.Show(ane.Message, "DataGridView_Load Error");
-                }
+                MessageBox.Show(ex.Message);
+                cnn.Close();
             }
         }
     }
-
-    public class DBHelper
-    {
-        private static OracleConnection conn = null;
-        public static string DBConnString
-        {
-            get;
-            private set;
-        }
-
-        public static bool bDBConnCheck = false;
-
-        private static int errorBoxCount = 0;
-
-        public DBHelper() { }
-
-        public static OracleConnection DBConn
-        {
-            get
-            {
-                if (!ConnectToDB())
-                {
-                    return null;
-                }
-                return conn;
-            }
-        }
-
-        public static bool ConnectToDB()
-        {
-            if (conn == null)
-            {
-                DBConnString = String.Format("Data Source = localhost:1521/orcl;User ID=system;Password=1234");
-
-                OracleConnection conn = new OracleConnection(DBConnString);
-                conn.Open();
-            }
-
-            try
-            {
-                if (!IsDBConnected)
-                {
-                    conn.Open();
-
-                    bDBConnCheck = (conn.State == System.Data.ConnectionState.Open) ? true : false;
-                }
-            }
-            catch (Exception e)
-            {
-                errorBoxCount++;
-                if (errorBoxCount == 1)
-                {
-                    MessageBox.Show(Convert.ToString(e), "DBHelper - ConnectToDB()");
-                }
-                return false;
-            }
-            return true;
-        }
-
-        public static bool IsDBConnected
-        {
-            get
-            {
-                if (conn.State != System.Data.ConnectionState.Open)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-        }
-
-        public static void Close()
-        {
-            if (IsDBConnected)
-                DBConn.Close();
-        }
-    }
-    
 }
